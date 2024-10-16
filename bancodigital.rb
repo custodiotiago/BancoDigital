@@ -1,4 +1,4 @@
-contasCorrentes = { 12345-6 => 87144798, 23456-7 => 92027944}
+contasCorrentes = { "12345-6" => "87144798", "23456-7" => "92027944"}
 
 loop do
 
@@ -17,7 +17,14 @@ loop do
         regex = /^\d{5}-\d{1}$/
     
         if numeroConta.match?(regex)
-            puts "Conta correta!"
+            if contasCorrentes.key?(numeroConta) # verifica se o numeroConta corresponde a uma key
+                puts contasCorrentes[numeroConta] + senha 
+                if contasCorrentes[numeroConta] == senha #verifica se a senha corresponde ao value da key                                         
+                    puts "Conta correta! Bem-vindo!"
+                else 
+                    puts "Conta ou senha inválidos!"
+                end
+            end
         else
             puts "Formato inválido!"
         end
